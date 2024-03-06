@@ -52,11 +52,10 @@ class EixoController extends Controller {
     }
 
     public function destroy(string $id) {
-        return "ok";
-        //if($this->repository->delete($id))  {
-           // return "<h1>Delete - OK!</h1>";
-       // }
+        if($this->repository->delete($id))  {
+            return "<h1>Delete - OK!</h1>";
+        }
 
-       // return "<h1>Delete - Not found Eixo!</h1>";
+        return "<h1>Delete - Not found Eixo!</h1>";
     }
 }
