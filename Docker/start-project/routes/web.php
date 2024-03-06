@@ -17,6 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('/eixos', 'App\Http\Controllers\EixoController');
-Route::resource('/niveis', 'App\Http\Controllers\NivelController');
+Route::resource('/eixo', 'App\Http\Controllers\EixoController');
+Route::resource('/nivel', 'App\Http\Controllers\NivelController');
+Route::resource('/curso', 'App\Http\Controllers\CursoController');
+Route::resource('/permission', 'App\Http\Controllers\PermissionController');
 
