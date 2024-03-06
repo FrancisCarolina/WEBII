@@ -16,6 +16,9 @@ class DatabaseSeeder extends Seeder
         $this->call(EixoSeeder::class);
         $this->call(NivelSeeder::class);
         $this->call(CursoSeeder::class);
+        $this->call(ResourceSeeder::class);
+        $this->call(RoleSeeder::class);
+        $this->call(PermissionSeeder::class);
 
 
     }
