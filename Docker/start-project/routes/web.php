@@ -26,4 +26,5 @@ Route::resource('/categoria', 'App\Http\Controllers\CategoriaController');
 Route::resource('/aluno', 'App\Http\Controllers\AlunoController');
 Route::resource('/usuario', 'App\Http\Controllers\UserController');
 Route::resource('/comprovante', 'App\Http\Controllers\ComprovanteController');
+Route::resource('/declaracao', 'App\Http\Controllers\DeclaracaoController');
 
