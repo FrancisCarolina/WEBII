@@ -24,4 +24,5 @@ Route::resource('/permission', 'App\Http\Controllers\PermissionController');
 Route::resource('/turma', 'App\Http\Controllers\TurmaController');
 Route::resource('/categoria', 'App\Http\Controllers\CategoriaController');
 Route::resource('/aluno', 'App\Http\Controllers\AlunoController');
+Route::resource('/usuario', 'App\Http\Controllers\UserController');
 
