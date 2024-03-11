@@ -4,18 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Repositories\TurmaRepository;
+use App\Repositories\CategoriaRepository;
 use App\Repositories\CursoRepository;
-use App\Models\Turma;
+use App\Models\Categoria;
 
-class TurmaController extends Controller
+class CategoriaController extends Controller
 {
     protected $repository;
 
     public function __construct(){
-       $this->repository = new TurmaRepository();
+       $this->repository = new CategoriaRepository();
     }
-
     public function index()
     {
         $data = $this->repository->selectAllWith(['curso']);
@@ -31,8 +30,9 @@ class TurmaController extends Controller
     {
         $objCurso = (new CursoRepository())->findById($request->curso_id);
         if(isset($objCurso)) {
-            $obj = new Turma();
-            $obj->ano = $request->ano;
+            $obj = new Categoria();
+            $obj->nome = mb_strtoupper($request->nome, 'UTF-8');
+            $obj->maximo_horas = $request->maximo_horas;
             $obj->curso()->associate($objCurso);
             $this->repository->save($obj);
 
@@ -58,14 +58,15 @@ class TurmaController extends Controller
         $objCurso = (new CursoRepository())->findById($request->curso_id);
 
         if(isset($obj) && isset($objCurso) ) {
-            $obj->ano = $request->ano;
+            $obj->nome = mb_strtoupper($request->nome, 'UTF-8');
+            $obj->maximo_horas = $request->maximo_horas;
             $obj->curso()->associate($objCurso);
 
             $this->repository->save($obj);
 
             return "<h1>Upate - OK!</h1>";
         }
-        return "<h1>Upate - Not found Curso or Turma!</h1>";
+        return "<h1>Upate - Not found Curso or Categoria!</h1>";
     }
 
     public function destroy(string $id)
@@ -73,6 +74,6 @@ class TurmaController extends Controller
         if($this->repository->delete($id)) {
             return "<h1>Delete - OK!</h1>";
             }
-        return "<h1>Delete - Not found Turma!</h1>";
+        return "<h1>Delete - Not found Cateforia!</h1>";
     }
 }
