@@ -21,13 +21,35 @@ class AlunoController extends Controller
     }
     public function index()
     {
-        $data = $this->repository->selectAllWith(['curso','user','turma']);
+        $data = $this->repository->selectAllWith(['curso','turma']);
         return $data;
     }
 
     public function create()
     {
         //
+    }
+    public function register()
+    {
+        //
+    }
+    public function storeRegister()
+    {
+        $objCurso = (new CursoRepository())->findById($request->curso_id);
+        $objTurma = (new TurmaRepository())->findById($request->turma_id);
+        if(isset($objCurso) && isset($objTurma) ) {
+            $obj = new Aluno();
+            $obj->nome = mb_strtoupper($request->nome, 'UTF-8');
+            $obj->cpf =  $request->cpf;
+            $obj->email = mb_strtolower($request->email, 'UTF-8');
+            $obj->password = Hash::make($request->password);
+            $obj->curso()->associate($objCurso);
+            $obj->turma()->associate($objTurma);
+            $this->repository->save($obj);
+
+            return "<h1>Store - OK!</h1>";
+        }
+        return "<h1>Store - Not found Curso or Turma!</h1>";
     }
 
     public function store(Request $request)

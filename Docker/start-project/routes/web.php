@@ -28,3 +28,4 @@ Route::resource('/usuario', 'App\Http\Controllers\UserController');
 Route::resource('/comprovante', 'App\Http\Controllers\ComprovanteController');
 Route::resource('/declaracao', 'App\Http\Controllers\DeclaracaoController');
 
+Route::post('/site/register', 'App\Http\Controllers\AlunoController@registerStore');
