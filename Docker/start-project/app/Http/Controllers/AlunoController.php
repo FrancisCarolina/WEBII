@@ -31,7 +31,9 @@ class AlunoController extends Controller
     }
     public function register()
     {
-        //
+        $cursos = (new CursoRepository())->selectAll();
+        $turmas = (new TurmaRepository())->selectAll();
+        return view('aluno.register', compact(['cursos', 'turmas']));
     }
     public function storeRegister()
     {

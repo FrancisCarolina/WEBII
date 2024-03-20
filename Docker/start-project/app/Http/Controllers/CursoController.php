@@ -19,8 +19,8 @@ class CursoController extends Controller
 
     public function index()
     {
-        $data = $this->repository->selectAllWith(['eixo', 'nivel']);
-        return $data;
+        //$data = $this->repository->selectAllWith(['eixo', 'nivel']);
+        return "OK";
     }
 
     public function create()
