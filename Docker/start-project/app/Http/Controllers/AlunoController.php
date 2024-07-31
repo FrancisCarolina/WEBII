@@ -35,7 +35,7 @@ class AlunoController extends Controller
         $turmas = (new TurmaRepository())->selectAll();
         return view('aluno.register', compact(['cursos', 'turmas']));
     }
-    public function storeRegister()
+    public function storeRegister(Request $request)
     {
         $objCurso = (new CursoRepository())->findById($request->curso_id);
         $objTurma = (new TurmaRepository())->findById($request->turma_id);
