@@ -92,4 +92,17 @@ class EixoController extends Controller
         $dompdf->render();
         $dompdf->stream("nome_do_relatorio.pdf", array("Attachment" => false));
     }
+
+    public function graph() {
+
+        $data = json_encode([
+        ["NOME", "TOTAL DE HORAS"],
+        ["MARIA", 150],
+        ["CARLOS", 90],
+        ["JOÃO", 232],
+        ["ANA", 197],
+        ]);
+
+        return view('eixo.grafico', compact(['data']));
+    }
 }

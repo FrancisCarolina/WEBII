@@ -32,6 +32,7 @@
                         </form>
 
                         <a href="{{route('report')}}" target="_blank">Relatorio</a>
+                        <a href="{{route('graph')}}">Grafico</a>
                     </td>
                 </tr>
             @endforeach

@@ -26,3 +26,4 @@ Route::get('/', function () {
 Route::resource('/eixo', EixoController::class);
 
 Route::get('/report/eixo/', [EixoController::class, 'report'])->name('report');
+Route::get('/graph/eixo/', [EixoController::class, 'graph'])->name('graph');
