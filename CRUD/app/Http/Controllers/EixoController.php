@@ -4,13 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Eixo;
+use Illuminate\Support\Facades\Storage;
 
 class EixoController extends Controller
 {
     public function index()
     {
+
         $data = Eixo::all();
         //dd($data);
+        //Storage::disk('local')->put('example.txt', 'Contents');
         return view('eixo.index', compact('data'));
     }
 
@@ -22,12 +25,20 @@ class EixoController extends Controller
     public function store(Request $request)
     {
         //dd($request);
-        $eixo = new Eixo();
-        $eixo->nome = $request->nome;
-        //$eixo->descricao = $request->descricao;
-        $eixo->save();
+        if($request->hasFile('documento')){
 
-        return redirect()->route('eixo.index');
+            $eixo = new Eixo();
+            $eixo->nome = $request->nome;
+            $eixo->descricao = $request->descricao;
+            $eixo->save();
+            $ext= $request->file('documento')->getClientOriginalExtension();
+            $nome_arq = $eixo->id.'_'.time().'.'.$ext;
+            $request->file('documento')->storeAs("public/", $nome_arq);
+            $eixo->url = $nome_arq;
+            $eixo->save();
+
+            return redirect()->route('eixo.index');
+        }
     }
 
     public function show($id){

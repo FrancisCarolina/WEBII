@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nome', 100);
             $table->text('descricao');
+            $table->string('url')->nullable();
             $table->timestamps();
         });
     }
