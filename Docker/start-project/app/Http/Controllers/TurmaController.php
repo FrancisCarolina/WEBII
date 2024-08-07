@@ -41,6 +41,11 @@ class TurmaController extends Controller
         return "<h1>Store - Not found Curso!</h1>";
     }
 
+    public function getTurmaByCurso($value){
+        $data = $this->repository->findByColumn('curso_id', $value);
+        return json_encode($data);
+    }
+
     public function show(string $id)
     {
         $data = $this->repository->findById($id);

@@ -17,3 +17,5 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+//popular select de turma do register
+Route::get('turma/{curso_id}', 'App\Http\Controllers\TurmaController@getTurmaByCurso');
