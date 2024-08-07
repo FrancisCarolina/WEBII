@@ -31,7 +31,7 @@
                             <input type="submit" value="Remover"/>
                         </form>
 
-                        <a href="{{route('report')}}">Relatorio</a>
+                        <a href="{{route('report')}}" target="_blank">Relatorio</a>
                     </td>
                 </tr>
             @endforeach

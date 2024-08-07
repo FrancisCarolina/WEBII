@@ -87,9 +87,8 @@ class EixoController extends Controller
 
     public function report(){
         $dompdf = new Dompdf();
-        $dompdf->loadHtml('hello world');
-        $dompdf->setPaper('A4', 'landscape');
+        $dompdf->loadHtml(view('eixo.pdf'));
         $dompdf->render();
-        $dompdf->stream();
+        $dompdf->stream("nome_do_relatorio.pdf", array("Attachment" => false));
     }
 }
