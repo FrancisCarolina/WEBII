@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Eixo;
-use Illuminate\Support\Facades\Storage;
+//use Illuminate\Support\Facades\Storage;
+use Dompdf\Dompdf;
 
 class EixoController extends Controller
 {
@@ -84,7 +85,11 @@ class EixoController extends Controller
         return "<h1>ERRO: EIXO NÃO ENCONTRADO!</h1>";
     }
 
-    public function report($eixo_id){
-        return "<h1>${eixo_id}</h1>";
+    public function report(){
+        $dompdf = new Dompdf();
+        $dompdf->loadHtml('hello world');
+        $dompdf->setPaper('A4', 'landscape');
+        $dompdf->render();
+        $dompdf->stream();
     }
 }

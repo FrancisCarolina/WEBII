@@ -24,4 +24,5 @@ Route::get('/', function () {
 
 //Route::get('/eixo', [EixoController::class, 'index']);
 Route::resource('/eixo', EixoController::class);
-//Route::get('/report/{eixo_id}', 'App\Http\Controllers\EixoController@report')->name('eixo.report');
+
+Route::get('/report/eixo/', [EixoController::class, 'report'])->name('report');

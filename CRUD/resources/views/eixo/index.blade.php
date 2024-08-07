@@ -30,6 +30,8 @@
                             @method('DELETE')
                             <input type="submit" value="Remover"/>
                         </form>
+
+                        <a href="{{route('report')}}">Relatorio</a>
                     </td>
                 </tr>
             @endforeach
