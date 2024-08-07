@@ -1,4 +1,7 @@
-<h1>Francis Carolina</h1>
-<br><br>
+<h1>Relatório de Eixos</h1>
 <hr>
-<h1>Lovo</h1>
+<ul>
+@foreach ($data as $item)
+        <li>{{$item->nome}}</li>
+@endforeach
+</ul>

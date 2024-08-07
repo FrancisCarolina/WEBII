@@ -86,8 +86,9 @@ class EixoController extends Controller
     }
 
     public function report(){
+        $data = Eixo::all();
         $dompdf = new Dompdf();
-        $dompdf->loadHtml(view('eixo.pdf'));
+        $dompdf->loadHtml(view('eixo.pdf', compact('data')));
         $dompdf->render();
         $dompdf->stream("nome_do_relatorio.pdf", array("Attachment" => false));
     }
