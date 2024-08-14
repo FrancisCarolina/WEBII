@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\PermissionController;
 use App\Models\Role;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
@@ -49,6 +50,8 @@ class RegisteredUserController extends Controller
         event(new Registered($user));
 
         Auth::login($user);
+
+        PermissionController::loadPermissions(Auth::user()->role_id);
 
         return redirect(RouteServiceProvider::HOME);
     }
