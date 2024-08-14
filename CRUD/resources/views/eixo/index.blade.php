@@ -3,10 +3,12 @@
 
 @section('content')
     <hr>
-
-    <a href="{{route('eixo.create')}}">Cadastrar</a>
+    @can('create', App\Models\Eixo::class)
+        <a href="{{route('eixo.create')}}">Cadastrar</a>
+    @endcan
     <hr>
 
+    @can('index', App\Models\Eixo::class)
     <table class="table">
         <thead>
             <th>ID</th>
@@ -23,13 +25,21 @@
                     <td>{{$item->descricao}}</td>
                     <td><a href="{{asset('storage')."/".$item->url}}" target="_blank">Arquivo</a></td>
                     <td>
-                        <a href="{{route('eixo.show', $item->id)}}">Mais info</a>
-                        <a href="{{route('eixo.edit', $item->id)}}">Alterar</a>
-                        <form method="POST" action="{{route('eixo.destroy', $item->id)}}">
-                            @csrf
-                            @method('DELETE')
-                            <input type="submit" value="Remover"/>
-                        </form>
+                        @can('show', App\Models\Eixo::class)
+                            <a href="{{route('eixo.show', $item->id)}}">Mais info</a>
+                        @endcan
+
+                        @can('edit', App\Models\Eixo::class)
+                            <a href="{{route('eixo.edit', $item->id)}}">Alterar</a>
+                        @endcan
+
+                        @can('destroy', App\Models\Eixo::class)
+                            <form method="POST" action="{{route('eixo.destroy', $item->id)}}">
+                                @csrf
+                                @method('DELETE')
+                                <input type="submit" value="Remover"/>
+                            </form>
+                        @endcan
 
                         <a href="{{route('report')}}" target="_blank">Relatorio</a>
                         <a href="{{route('graph')}}">Grafico</a>
@@ -38,5 +48,6 @@
             @endforeach
         </tbody>
     </table>
+    @endcan
 
 @endsection
