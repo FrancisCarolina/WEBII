@@ -17,7 +17,7 @@ class PermissionController extends Controller
         foreach($perm as $item){
             $sess[$item->resource->name] = (boolean) $item->permission; 
         }
-        dd($sess);
+        //dd($sess);
         session(['user_permissions' => $sess]);
 
     } 
