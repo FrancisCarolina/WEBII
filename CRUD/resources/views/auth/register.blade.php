@@ -45,8 +45,9 @@
 
             <select name="role" id="role" class="block mt-1 w-full" required>
                 <option disabled selected></option>
-                <option value="aluno">Aluno</option>
-                <option value="professor">Professor</option>
+                @foreach ($roles as $item)
+                    <option value="{{$item->id}}">{{$item->name}}</option>
+                @endforeach
             </select>
 
         </div>
