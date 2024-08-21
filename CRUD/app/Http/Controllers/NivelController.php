@@ -23,7 +23,8 @@ class NivelController extends Controller
      */
     public function create()
     {
-        //
+        $this->authorize('create', Nivel::class);
+        return view('nivel.create');
     }
 
     /**
@@ -31,7 +32,14 @@ class NivelController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->authorize('create', Nivel::class);
+
+        $nivel = new Nivel();
+        $nivel->nome = $request->nome;
+        $nivel->save();
+
+        return redirect()->route('nivel.index');
+        
     }
 
     /**
