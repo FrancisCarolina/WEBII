@@ -68,7 +68,7 @@ class EixoController extends Controller
         $eixo = Eixo::find($id);
         if(isset($eixo)){
             $eixo->nome = $request->nome;
-            //$eixo->descricao = $request->descricao;
+            $eixo->descricao = $request->descricao;
             $eixo->save();
 
             return redirect()->route('eixo.index');

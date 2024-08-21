@@ -55,7 +55,13 @@ class NivelController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $this->authorize('edit', Nivel::class);
+        $nivel = Nivel::find($id);
+        if(isset($nivel)){
+            return view('nivel.edit', compact(['nivel']));
+        }
+
+        return "<h1>ERRO: NIVEL NÃO ENCONTRADO!</h1>";
     }
 
     /**
@@ -63,7 +69,16 @@ class NivelController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $this->authorize('edit', Nivel::class);
+        $nivel = Nivel::find($id);
+        if(isset($nivel)){
+            $nivel->nome = $request->nome;
+            $nivel->save();
+
+            return redirect()->route('nivel.index');
+        }
+
+        return "<h1>ERRO: NIVEL NÃO ENCONTRADO!</h1>";
     }
 
     /**
