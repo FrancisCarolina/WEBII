@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CursoController;
 use App\Http\Controllers\NivelController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\EixoController;
@@ -21,6 +22,7 @@ Route::get('/', function () {
 });
 Route::resource('/eixo', EixoController::class)->middleware(['auth']);
 Route::resource('/nivel', NivelController::class)->middleware(['auth']);
+Route::resource('/curso', CursoController::class)->middleware(['auth']);
 
 Route::get('/report/eixo/', [EixoController::class, 'report'])->name('report');
 Route::get('/graph/eixo/', [EixoController::class, 'graph'])->name('graph');

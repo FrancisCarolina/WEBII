@@ -43,6 +43,11 @@
                             {{ __('Niveis') }}
                         </x-dropdown-link>
 
+
+                        <x-dropdown-link :href="route('curso.index')">
+                            {{ __('Cursos') }}
+                        </x-dropdown-link>
+
                         <x-dropdown-link :href="route('profile.edit')">
                             {{ __('Profile') }}
                         </x-dropdown-link>
