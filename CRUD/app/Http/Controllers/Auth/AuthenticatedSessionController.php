@@ -3,9 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\PermissionController;
 use App\Http\Requests\Auth\LoginRequest;
-use App\Models\Permission;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -30,8 +28,6 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
 
         $request->session()->regenerate();
-
-        PermissionController::loadPermissions(Auth::user()->role_id);
 
         return redirect()->intended(RouteServiceProvider::HOME);
     }
