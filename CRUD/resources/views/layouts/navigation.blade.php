@@ -39,6 +39,10 @@
                             {{ __('Eixos') }}
                         </x-dropdown-link>
 
+                        <x-dropdown-link :href="route('nivel.index')">
+                            {{ __('Niveis') }}
+                        </x-dropdown-link>
+
                         <x-dropdown-link :href="route('profile.edit')">
                             {{ __('Profile') }}
                         </x-dropdown-link>

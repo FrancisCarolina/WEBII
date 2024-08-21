@@ -14,8 +14,6 @@ class EixoController extends Controller
         $this->authorize('index', Eixo::class);
 
         $data = Eixo::all();
-        //dd($data);
-        //Storage::disk('local')->put('example.txt', 'Contents');
         return view('eixo.index', compact('data'));
     }
 
