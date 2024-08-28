@@ -113,6 +113,14 @@ class CursoController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $this->authorize('destroy', Curso::class);
+
+        $curso = Curso::find($id);
+        if(isset($curso)){
+            $curso->delete();
+            return redirect()->route('curso.index');
+        }
+
+        return "<h1>ERRO: CURSO NÃO ENCONTRADO!</h1>";
     }
 }
