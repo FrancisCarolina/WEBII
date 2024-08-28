@@ -72,16 +72,41 @@ class CursoController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $this->authorize('edit', Curso::class);
+        $curso = Curso::find($id);
+        $niveis = Nivel::all();
+        $eixos = Eixo::all();
+        if(isset($curso)){
+            return view('curso.edit', compact('curso', 'niveis', 'eixos'));
+        }
+
+        return "<h1>ERRO: CURSO NÃO ENCONTRADO!</h1>";
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'nome' => 'required|string|max:255',
+            'sigla' => 'required|string|max:10',
+            'total_horas' => 'required|numeric|min:1',
+            'nivel' => 'required|exists:nivels,id',
+            'eixo' => 'required|exists:eixos,id',
+        ]);
+
+        $curso = Curso::findOrFail($id);
+        $curso->nome = $request->nome;
+        $curso->sigla = $request->sigla;
+        $curso->total_horas = $request->total_horas;
+        $curso->nivel_id = $request->nivel;
+        $curso->eixo_id = $request->eixo;
+        $curso->save();
+
+        return redirect()->route('curso.index')->with('success', 'Curso atualizado com sucesso!');
     }
+
 
     /**
      * Remove the specified resource from storage.
