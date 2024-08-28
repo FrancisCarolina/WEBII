@@ -41,7 +41,7 @@
                             </form>
                         @endcan
 
-                        <a href="{{route('report')}}" target="_blank">Relatorio</a>
+                        <a href="{{route('eixo.report')}}" target="_blank">Relatorio</a>
                         <a href="{{route('graph')}}">Grafico</a>
                     </td>
                 </tr>

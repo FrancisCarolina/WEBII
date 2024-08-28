@@ -24,7 +24,9 @@ Route::resource('/eixo', EixoController::class)->middleware(['auth']);
 Route::resource('/nivel', NivelController::class)->middleware(['auth']);
 Route::resource('/curso', CursoController::class)->middleware(['auth']);
 
-Route::get('/report/eixo/', [EixoController::class, 'report'])->name('report');
+Route::get('/report/eixo/', [EixoController::class, 'report'])->name('eixo.report');
+Route::get('/report/curso/', [CursoController::class, 'report'])->name('curso.report');
+
 Route::get('/graph/eixo/', [EixoController::class, 'graph'])->name('graph');
 
 Route::get('/dashboard', function () {

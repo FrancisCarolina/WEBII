@@ -6,6 +6,7 @@ use App\Models\Eixo;
 use App\Models\Nivel;
 use Illuminate\Http\Request;
 use App\Models\Curso;
+use Dompdf\Dompdf;
 
 class CursoController extends Controller
 {
@@ -122,5 +123,18 @@ class CursoController extends Controller
         }
 
         return "<h1>ERRO: CURSO NÃO ENCONTRADO!</h1>";
+    }
+
+    public function report(){
+        $data = Curso::with('eixo')->get();
+
+        $cursosPorEixo = $data->groupBy(function($curso) {
+            return $curso->eixo ? $curso->eixo->nome : 'Sem Eixo';
+        });
+
+        $dompdf = new Dompdf();
+        $dompdf->loadHtml(view('curso.pdf', compact('cursosPorEixo'))->render());
+        $dompdf->render();
+        $dompdf->stream("lista_de_cursos.pdf", array("Attachment" => false));
     }
 }
