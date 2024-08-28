@@ -9,7 +9,17 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    {{ __("You're logged in!") }}
+                    <a href={{route('eixo.index')}} style="color: darkblue; text-decoration: underline;cursor: pointer">
+                        Eixos
+                    </a>
+                    <br/>
+                    <a href={{route('nivel.index')}} style="color: darkblue; text-decoration: underline;cursor: pointer">
+                        Niveis
+                    </a>
+                    <br/>
+                    <a href={{route('curso.index')}} style="color: darkblue; text-decoration: underline;cursor: pointer">
+                        Cursos
+                    </a>
                 </div>
             </div>
         </div>
