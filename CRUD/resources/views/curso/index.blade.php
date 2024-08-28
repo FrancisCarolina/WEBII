@@ -13,7 +13,6 @@
         <thead>
             <th>ID</th>
             <th>NOME</th>
-            <th>TESTE</th>
             <th>AÇÕES</th>
         </thead>
         <tbody>
@@ -22,6 +21,10 @@
                     <td>{{$item->id}}</td>
                     <td>{{$item->nome}}</td>
                     <td>
+                        @can('show', App\Models\Eixo::class)
+                            <a href="{{route('curso.show', $item->id)}}">Mais info</a>
+                        @endcan
+
                         @can('edit', App\Models\Curso::class)
                             <a href="{{route('curso.edit', $item->id)}}">Alterar</a>
                         @endcan
