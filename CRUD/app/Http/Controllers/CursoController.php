@@ -137,4 +137,22 @@ class CursoController extends Controller
         $dompdf->render();
         $dompdf->stream("lista_de_cursos.pdf", array("Attachment" => false));
     }
+    public function graph()
+    {
+        $cursos = Curso::with('eixo')->get();
+
+        $contagemPorEixo = $cursos->groupBy(function($curso) {
+            return $curso->eixo ? $curso->eixo->nome : 'Sem Eixo';
+        })->map->count();
+
+        $data = [['EIXO', 'TOTAL CURSOS']];
+        foreach ($contagemPorEixo as $eixo => $count) {
+            $data[] = [$eixo, $count];
+        }
+
+        $jsonData = json_encode($data);
+
+        return view('curso.grafico', ['data' => $jsonData]);
+    }
+
 }

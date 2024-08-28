@@ -42,7 +42,7 @@
                         @endcan
 
                         <a href="{{route('eixo.report')}}" target="_blank">Relatorio</a>
-                        <a href="{{route('graph')}}">Grafico</a>
+                        <a href="{{route('eixo.graph')}}">Grafico</a>
                     </td>
                 </tr>
             @endforeach

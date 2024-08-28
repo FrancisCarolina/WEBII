@@ -10,6 +10,9 @@
 
     @can('index', App\Models\Curso::class)
     <a href="{{route('curso.report')}}" target="_blank">Relatorio de Cursos</a>
+    </br>
+    <a href="{{route('curso.graph')}}" target="_blank">Gráfico de Cursos</a>
+
     <table class="table">
         <thead>
             <th>ID</th>
